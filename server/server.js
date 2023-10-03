@@ -1,5 +1,9 @@
 const express = require('express');
-const planetsData = require('../db/planets.json')
+const planetsData = require('../db/planets.json');
+const { MongoClient } = require('mongodb');
+const url = "mongodb://localhost:27017";
+const client = new MongoClient(url);
+const dbName = "swapi";
 
 const PORT = 3001;
 
