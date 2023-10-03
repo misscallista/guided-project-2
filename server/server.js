@@ -1,15 +1,23 @@
 const express = require('express');
-const planetsData = require('../db/planets.json');
 const { MongoClient } = require('mongodb');
-const url = "mongodb://localhost:27017";
-const client = new MongoClient(url);
+const url_mongo = "mongodb://localhost:27017";
+const client = new MongoClient(url_mongo);
 const dbName = "swapi";
+
+
+const db = client.db(dbName);
+// name planets collection
+const planetsData = db.collection("planets");
 
 const PORT = 3001;
 
 const app = express();
 
-app.get('/api/planets', (req, res) => res.json(planetsData));
+app.get('/api/planets', (req, res) => {
+    const planets = planetsData.find({}).toArray();
+    return res.planets;
+});
 
 
 app.listen(PORT);
+
