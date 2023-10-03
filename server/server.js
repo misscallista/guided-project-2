@@ -3,6 +3,7 @@ const { MongoClient } = require('mongodb');
 const url_mongo = "mongodb://localhost:27017";
 const client = new MongoClient(url_mongo);
 const dbName = "swapi";
+const CORS = require('cors');
 
 
 const db = client.db(dbName);
@@ -16,6 +17,7 @@ const PORT = 3001;
 
 const app = express();
 app.use(express.json());
+app.use(CORS());
 
 app.get('/api/planets', async (req, res) => {
     try {
@@ -30,7 +32,6 @@ app.get('/api/films', async (req, res) => {
     try {
         const films = await filmsData.find({}).toArray();
         res.status(200).json(films);
-        console.log(films)
     } catch(err) {
         res.status(500).json(err)
     }
@@ -39,7 +40,7 @@ app.get('/api/films', async (req, res) => {
 app.get('/api/characters', async (req, res) => {
     try {
         const characters = await charactersData.find({}).toArray();
-        res.send(characters);
+        res.send(json(characters));
     } catch(err) {
         res.status(500).json(err)
     }
