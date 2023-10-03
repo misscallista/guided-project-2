@@ -8,6 +8,8 @@ const dbName = "swapi";
 const db = client.db(dbName);
 // name planets collection
 const planetsData = db.collection("planets");
+const filmsData = db.collection("films");
+
 
 const PORT = 3001;
 
@@ -18,8 +20,18 @@ app.get('/api/planets', async (req, res) => {
         const planets = await planetsData.find({}).toArray();
 
         res.status(200).json(planets);
+    } catch(err) {
+        res.status(500).json(err)
+    }
+});
+
+app.get('/api/films', async (req, res) => {
+    try {
+        const films = await filmsData.find({}).toArray();
+
+        res.status(200).json(films);
         console.log("good")
-        console.log(planets)
+        console.log(films)
     } catch(err) {
         res.status(500).json(err)
         console.log("bad")
