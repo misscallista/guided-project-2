@@ -6,4 +6,6 @@ const PORT = 3001;
 const app = express();
 
 app.get('/api/planets', (req, res) => res.json(planetsData));
-app.listen(PORT)
+
+
+app.listen(PORT);
