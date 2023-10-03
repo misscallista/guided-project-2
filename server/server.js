@@ -13,11 +13,18 @@ const PORT = 3001;
 
 const app = express();
 
-app.get('/api/planets', (req, res) => {
-    const planets = planetsData.find({}).toArray();
-    return res.planets;
-});
+app.get('/api/planets', async (req, res) => {
+    try {
+        const planets = await planetsData.find({}).toArray();
 
+        res.status(200).json(planets);
+        console.log("good")
+        console.log(planets)
+    } catch(err) {
+        res.status(500).json(err)
+        console.log("bad")
+    }
+});
 
 app.listen(PORT);
 
