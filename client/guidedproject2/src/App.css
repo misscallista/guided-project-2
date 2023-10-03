@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+
+  --red: #ff0000ff;
+  --ut-orange: #ff8700ff;
+  --gold: #ffd300ff;
+  --chartreuse: #deff0aff;
+  --spring-bud: #a1ff0aff;
+  --spring-green: #0aff99ff;
+  --electric-blue: #0aefffff;
+  --azure: #147df5ff;
+  --electric-indigo: #580affff;
+  --electric-purple: #be0affff;
+
+  --light2: #FAD0C4;
+  /* light peach */
+  --light1: #FFF4E0;
+  /* light yellow */
+  --dark2: #7F98AA;
+  /* dark blue-gray */
+  --dark1: #1C2331;
+  /* darkest blue */
+
+  color: var(--dark1);
+  background-color: var(--light1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+table {
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  & thead tr th {
+    border-bottom: 2px solid var(--dark2)
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  & tr td {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  & tr td:nth-child(1) {
+    font-weight: bold;
+  }
+
+  & tr:nth-child(2n) {
+    background-color: var(--light2);
   }
 }
